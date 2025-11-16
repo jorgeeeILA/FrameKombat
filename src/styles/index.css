@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+:root{
+  --mk-red: #b91c1c;
+  --mk-dark: #030204;
+  --card: #0b0b0d;
+  --mk-red-deep: #7a0f0f;
+  --mk-glow: rgba(185,28,28,0.18);
+  --mk-glow-strong: rgba(185,28,28,0.32);
+}
+
+body{
+  background: linear-gradient(180deg, var(--mk-dark) 0%, #050406 100%);
+}
+
+.mk-navbar{
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.mk-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Interactive card lift */
+.mk-card-interactive {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.mk-card-interactive:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 48px rgba(2,6,23,0.7), 0 0 24px var(--mk-glow-strong);
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* More pronounced elevated style for featured cards */
+.mk-elevated{
+  box-shadow: 0 18px 40px rgba(2,6,23,0.6), 0 0 18px rgba(0,0,0,0.6);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+}
+.mk-elevated:hover{ 
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 32px 80px rgba(2,6,23,0.7), 0 0 28px var(--mk-glow-strong);
+}
+
+/* Portrait ring with red inner glow */
+.mk-portrait-ring{ 
+  box-shadow: inset 0 0 18px rgba(0,0,0,0.6), 0 6px 18px rgba(0,0,0,0.6);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.mk-portrait-ring::after{
+  content: '';
+  position: absolute; inset: 0; pointer-events: none; border-radius: 0.5rem;
+  box-shadow: inset 0 0 28px var(--mk-glow);
+}
+
+/* Nav button base for MK theme */
+.mk-nav-button{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border: 1px solid rgba(255,255,255,0.03);
+  color: #f8fafc;
+}
+
+/* Title treatment - heavier + subtle red glow */
+.mk-title{
+  font-family: 'Anton, system-ui, sans-serif';
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.6), 0 10px 30px rgba(185,28,28,0.08);
+}
+
+/* Header 'sadistic' overlay - subtle radial dark + red gradient */
+.mk-header{ position: relative }
+.mk-header::after{
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 20% 10%, rgba(185,28,28,0.04), transparent 20%), linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.18));
+  mix-blend-mode: overlay; opacity: 0.85;
+}
+
+/* small blood drip ornament for decorative use */
+/* Blood drip animation (decorative) */
+.mk-drip{
+  position: relative;
+  width: 22px;
+  height: 36px;
+  display: inline-block;
+}
+.mk-drip .drop{
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 12px;
+  background: radial-gradient(circle at 30% 30%, var(--mk-red) 0%, var(--mk-red-deep) 70%);
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-8px) scaleY(0.6);
+  opacity: 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.6), inset 0 0 6px rgba(255,0,0,0.06);
+}
+.mk-drip .drop:nth-child(1){ left: 50%; animation: mk-drip 1800ms cubic-bezier(.2,.8,.2,1) infinite; animation-delay: 0ms }
+.mk-drip .drop:nth-child(2){ left: 62%; animation: mk-drip 1800ms cubic-bezier(.2,.8,.2,1) infinite; animation-delay: 500ms }
+.mk-drip .drop:nth-child(3){ left: 38%; animation: mk-drip 1800ms cubic-bezier(.2,.8,.2,1) infinite; animation-delay: 900ms }
+
+@keyframes mk-drip {
+  0% { transform: translateX(-50%) translateY(-8px) scaleY(0.4); opacity: 0 }
+  10% { opacity: 1 }
+  70% { transform: translateX(-50%) translateY(22px) scaleY(1); opacity: 0.9 }
+  100% { transform: translateX(-50%) translateY(34px) scaleY(1.1); opacity: 0 }
+}
+
+/* Slight red outline on hover for cards (no pulse) */
+.mk-elevated:hover{
+  border-color: var(--mk-red-deep);
+  box-shadow: 0 36px 80px rgba(2,6,23,0.72), 0 0 28px var(--mk-glow-strong);
+}
+
+/* Navbar active animation */
+.mk-navbar .active-anim {
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+.mk-navbar .active-anim:hover {
+  transform: translateY(-2px);
+}
+
+/* Frame data row hover */
+.frame-row:hover {
+  background: rgba(255,255,255,0.015);
+}
+
+/* Mortal Kombat topography overlay for character portraits */
+.mk-topography::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/mk-topography.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Reusable MK title/font styling used for the header and character names */
+.mk-title{
+  font-family: 'Anton, system-ui, sans-serif';
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Header / Navbar layout tweaks */
+.mk-navbar .text-xl{
+  font-size: 1.125rem;
+}
+.mk-navbar img{ display: block }
+
