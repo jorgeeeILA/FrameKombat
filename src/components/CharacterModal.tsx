@@ -7,9 +7,10 @@ type Props = {
   onClose: () => void
   onToggleFavorite: (id: string) => void
   isFavorite: (id: string) => boolean
+  onViewFrameData?: (id: string) => void
 }
 
-export default function CharacterModal({ character, open, onClose, onToggleFavorite, isFavorite }: Props) {
+export default function CharacterModal({ character, open, onClose, onToggleFavorite, isFavorite, onViewFrameData }: Props) {
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
@@ -48,7 +49,15 @@ export default function CharacterModal({ character, open, onClose, onToggleFavor
             {character.notes && <p className="mt-3 text-slate-300 text-sm">{character.notes}</p>}
 
             <div className="mt-4">
-              <button className="px-4 py-2 rounded-md bg-[var(--mk-red)] text-black font-semibold">Ver Frame Data</button>
+              <button
+                onClick={() => {
+                  if (character) onViewFrameData?.(character.id)
+                  onClose()
+                }}
+                className="px-4 py-2 rounded-md bg-[var(--mk-red)] text-black font-semibold"
+              >
+                Ver Frame Data
+              </button>
             </div>
           </div>
         </div>

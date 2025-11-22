@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react"
+import React, { useState } from 'react'
 import logoSrc from './assets/MkFondo_Small.png'
 import Navbar from './components/Navbar'
 import FrameDataPage from './pages/FrameDataPage'
@@ -10,7 +10,7 @@ import CombosPage from './pages/CombosPage'
 import ToolsPage from './pages/ToolsPage'
 
 export default function App() {
-  const [active, setActive] = useState<'framedata' | 'details' | 'mechanics' | 'extras' | 'characters' | 'combos' | 'tools'>("characters")
+  const [active, setActive] = useState<'framedata' | 'details' | 'mechanics' | 'extras' | 'characters' | 'combos' | 'tools'>('characters')
 
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null)
 
@@ -34,7 +34,7 @@ export default function App() {
                   <span className="drop" />
                   <span className="drop" />
                 </div>
-                <p className="text-sm text-slate-300">MORTAL KOMBAT XL  Explorador de framedata y técnicas</p>
+                <p className="text-sm text-slate-300">MORTAL KOMBAT XL — Explorador de framedata y técnicas</p>
               </div>
             </div>
           </div>

@@ -120,6 +120,9 @@ export default function CharactersPage({ onSelectCharacter }: Props) {
         onClose={() => setModalOpen(false)}
         onToggleFavorite={(id) => setFavorites((s) => ({ ...s, [id]: !s[id] }))}
         isFavorite={(id) => !!favorites[id]}
+        onViewFrameData={(id) => {
+          if (onSelectCharacter && modalCharacter) onSelectCharacter(modalCharacter)
+        }}
       />
     </section>
   )
