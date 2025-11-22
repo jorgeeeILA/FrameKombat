@@ -104,7 +104,7 @@ export default function MechanicsPage() {
             {openId === m.id && (
               <div className="mt-3 text-sm text-slate-200">
                 <div className="mb-2">{m.desc}</div>
-                <div className="text-xs text-slate-400">Consejo: edita o pide ejemplos más concretos para esta técnica.</div>
+                <div className="text-xs text-slate-400">Consejo: Siempre practica antes de intentar usar esta técnica en combate real.</div>
               </div>
             )}
           </article>
